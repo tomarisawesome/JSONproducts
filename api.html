@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <title>Task 4: Dog API Example - Cocker Spaniel</title>
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    button:hover {
+      background-color: #fe539f;
+    }
+    img {
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      max-width: 400px;
+      height: auto;
+    }
+    #info {
+      margin-top: 40px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 20px;
+    }
+    h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 30px;
+    }
+    h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 25px;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>🐶🐾  Random Cocker Spaniel Image ✨🐾</h2>
+  <button id="loadDog">Show Cocker Spaniel</button>
+  <div id="dogResult"></div>
+
+  <div id="info">
+    <h3>About This API</h3>
+    <p><strong>API Name:</strong> Dog CEO’s Dog API</p>
+    <p><strong>Description:</strong> The Dog API displays random pictures of dogs by breed. People can upload their own dog pics as well.</p>
+    <p><strong>Why I chose this API:</strong> I really love dogs. It was fun to see other people's dogs so easily in the JSON format. </p>
+    <p><strong>API Source:</strong> <a href="https://dog.ceo/dog-api/" target="_blank">https://dog.ceo/dog-api/</a></p>
+    <p><strong>Parameter used:</strong> <code style = "font-family: 'DM Sans', san-serif;">breed/spaniel/cocker/images/random</code> — retrieves a random image of a Cocker Spaniel (because they're awesome).</p>
+    <p><strong>Example use:</strong> This API could be used for a dog breed gallery that shows a random image of each breed or just for fun!</p>
+  </div>
+
+  <script>
+    document.getElementById('loadDog').addEventListener('click', () => {
+      fetch('https://dog.ceo/api/breed/spaniel/cocker/images/random')
+        .then(response => response.json())
+        .then(data => {
+          const imageUrl = data.message;
+          document.getElementById('dogResult').innerHTML =
+            `<img src="${imageUrl}" alt="Cocker Spaniel">`;
+        })
+        .catch(err => console.error('Error fetching dog image:', err));
+    });
+  </script>
+
+</body>
+</html>
+
