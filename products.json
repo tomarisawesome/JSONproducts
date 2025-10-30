@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Sunset Hydroflask",
+    "description": "24oz waterbottle with red, orange, blue hombre, very loved (dented)",
+    "price": 35,
+    "categories": ["well-loved", "vintage", "waterbottle", "vsco trendy", "performative but cute"]
+  },
+  {
+    "name": "Sony XM4 Headphones",
+    "description": "Wireless over-ear noise cancelling headphones with heart sticker",
+    "price": 100,
+    "categories": ["tech-ish", "ipad baby agenda", "comfy-cozy fall vibe", "accessories", "noise-cancelling", "great for blocking out the haters"]
+  },
+  {
+    "name": "Chalk Bag",
+    "description": "Teal rock climbing bag chalk holder with sinch and waist strap",
+    "price": 20,
+    "categories": ["climbing", "chalk", "accessories", "performative but cute", "vintage"]
+  },
+  {
+    "name": "Popsocket Wallet",
+    "description": "Slim blue wallet, phone attachment with slidable card dispenser, phone stand feature",
+    "price": 20,
+    "categories": ["accessories", "tech-ish", "ipad baby agenda"]
+  },
+  {
+    "name": "Northwestern Sweatshirt",
+    "description": "Oversized, vintage, purple, crewneck with lettering and some stains",
+    "price": 30,
+    "categories": ["well-loved", "vintage", "clothing", "comfy-cozy fall vibe", "performative but cute"]
+  }
+]

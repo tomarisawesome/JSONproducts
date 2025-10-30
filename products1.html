@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1: Products JSON Example</title>
+</head>
+<body>
+  <h2>Product List - Part 1</h2>
+
+  <script>
+    // Global variable
+    const products = [
+      {
+        "name": "Sunset Hydroflask",
+        "description": "24oz waterbottle with red, orange, blue hombre",
+        "price": 35,
+        "categories": ["waterbottle", "trendy"]
+      },
+      {
+        "name": "Sony XM4 Headphones",
+        "description": "Wireless over-ear noise cancelling headphones",
+        "price": 100,
+        "categories": ["electronics", "audio", "noise-cancelling"]
+      },
+      {
+        "name": "Chalk Bag",
+        "description": "Teal rock climbing bag chalk holder with sinch and waist strap",
+        "price": 20,
+        "categories": ["climbing", "chalk", "bag"]
+      },
+      {
+        "name": "Popsocket Wallet",
+        "description": "Slim blue wallet, phone attachment with slidable card dispenser",
+        "price": 20,
+        "categories": ["accessories", "wallet"]
+      },
+      {
+        "name": "Northwestern Sweathship",
+        "description": "Oversized, vintage, purple, crewneck with lettering",
+        "price": 30,
+        "categories": ["vintage", "clothing", "sweatshirt"]
+      }
+    ];
+
+    // convert JSON to string
+    const productsString = JSON.stringify(products, null, 2);
+
+    // show string on the page
+    document.write("<pre>" + productsString + "</pre>");
+  </script>
+</body>
+</html>

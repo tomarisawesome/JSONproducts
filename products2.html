@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2: Products JSON Loader</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <!-- jQuery cdn -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: DM Sans, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: DM Sans, sans-serif;
+    }
+
+    button:hover {
+      background-color: #fe539f;
+    }
+
+    #result {
+      margin-top: 30px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .product h3 {
+      margin: 0 0 5px;
+      color: #4A4A4A;
+    }
+
+    .product p {
+      margin: 3px 0;
+      color: #555;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #40ba93;
+    }
+
+    .categories {
+      font-style: italic;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Product List - Task 3</h2>
+
+  <button id="loadProducts">Load Products</button>
+
+  <div id="result"></div>
+
+  <script>
+    // When button is clicked, load JSON file
+    $('#loadProducts').click(function() {
+      $.get('products.json', function(data) {
+        // Ensure it's in object form
+        const products = typeof data === "string" ? JSON.parse(data) : data;
+
+        // Prepare HTML output
+        let output = "";
+        products.forEach(product => {
+          output += `
+            <div class="product">
+              <h3>${product.name}</h3>
+              <p>${product.description}</p>
+              <p class="price">Price: $${product.price}</p>
+              <p class="categories">Categories: ${product.categories.join(", ")}</p>
+            </div>
+          `;
+        });
+
+        // Display products in the result div
+        document.getElementById('result').innerHTML = output;
+      });
+    });
+  </script>
+</body>
+</html>

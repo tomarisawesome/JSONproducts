@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3: Filter Products by Category</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    button:hover {
+      background-color: #fe539f;
+    }
+    select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    #result {
+      margin-top: 30px;
+    }
+    .product-name {
+      background: white;
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Product Filter - Task 4</h2>
+  <select id="categorySelect">
+    <option value="">-- Select a Category --</option>
+  </select>
+  <button id="filterBtn">Filter</button>
+
+  <div id="result"></div>
+
+  <script>
+    let products = [];
+
+    // load in json data
+    $.get('products.json', function(data) {
+      products = typeof data === "string" ? JSON.parse(data) : data;
+
+    //   get categories dynamically
+      const categories = new Set();
+      products.forEach(p => p.categories.forEach(cat => categories.add(cat)));
+
+    //   populate dropdown
+      categories.forEach(cat => {
+        $('#categorySelect').append(`<option value="${cat}">${cat}</option>`);
+      });
+    });
+
+    // filter button click
+    $('#filterBtn').click(function() {
+      const selectedCategory = $('#categorySelect').val();
+      $('#result').empty();
+
+      if (!selectedCategory) {
+        $('#result').html("<p>Please select a category.</p>");
+        return;
+      }
+
+      // filter products by category
+      const filtered = products.filter(p => p.categories.includes(selectedCategory));
+
+      if (filtered.length === 0) {
+        $('#result').html("<p>No products found for this category.</p>");
+      } else {
+        filtered.forEach(p => {
+          $('#result').append(`<div class="product-name">${p.name}</div>`);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
